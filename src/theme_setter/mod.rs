@@ -8,8 +8,6 @@ pub struct ThemeParams {
 }
 
 pub mod theme_setter {
-    // create theme params struct to use it in set_themes function
-
     use std::fs;
     use std::process::Command;
     use crate::theme_setter::ThemeParams;
@@ -20,10 +18,8 @@ pub mod theme_setter {
         let kitty_theme = fs::read_to_string(params.kitty).unwrap();
         fs::write("/home/dmytro/.config/kitty/current-theme.conf", kitty_theme).unwrap();
 
-        // Writing to another file
         fs::write("/home/dmytro/.config/rofi/config.rasi", params.rofi).unwrap();
 
-        // Function to set wallpaper
         set_wallpaper(params.wallpaper.as_str());
 
         // Restarting i3
