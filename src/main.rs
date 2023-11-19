@@ -1,7 +1,6 @@
-use std::{env, fs, process::Command};
-
-//
+mod themes;
+mod theme_setter;
 
 fn main() {
-    println!("Hello World")
+    themes::gruvbox::apply();
 }
