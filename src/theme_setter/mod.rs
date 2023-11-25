@@ -10,6 +10,7 @@ pub struct ThemeParams {
 pub mod theme_setter {
     use std::fs;
     use std::process::Command;
+
     use crate::theme_setter::ThemeParams;
 
     pub fn set_themes(params: ThemeParams) {
@@ -29,13 +30,12 @@ pub mod theme_setter {
             .unwrap();
     }
 
-    pub fn set_wallpaper(wallpaper: &str) {
-        let monitors_output = Command::new("xrandr")
-            .arg("--listmonitors")
+    fn set_wallpaper(path: &str) {
+        //set nitrogen wallpaper
+        let output = Command::new("nitrogen")
+            .arg("--set-zoom-fill")
+            .arg(path)
             .output()
-            .unwrap();
-
-        let monitors_str = String::from_utf8_lossy(&monitors_output.stdout);
-        let monitors = monitors_str.split_whitespace();
+            .expect("failed to execute process");
     }
 }
