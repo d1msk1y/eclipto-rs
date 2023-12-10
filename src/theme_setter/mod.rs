@@ -1,10 +1,10 @@
 // Declare module that will set gruvbox theme
 
 pub struct ThemeParams {
-    pub kitty: String,
-    pub wallpaper: String,
-    pub rofi: String,
-    pub polybar: String,
+    pub kitty: Option<String>,
+    pub wallpaper: Option<String>,
+    pub rofi: Option<String>,
+    pub polybar: Option<String>,
 }
 
 pub mod theme_setter {
@@ -14,14 +14,42 @@ pub mod theme_setter {
     use crate::theme_setter::ThemeParams;
 
     pub fn set_themes(params: ThemeParams) {
-        fs::write("/home/dmytro/polybar-collection/theme.sh", params.polybar).unwrap();
+        match params.kitty {
+            Some(ref path) => {
+                let kitty_theme = fs::read_to_string(path).unwrap();
+                fs::write("/home/dmytro/.config/kitty/current-theme.conf", kitty_theme).unwrap();
+            }
+            None => {
+                println!("No kitty theme, doing nothing");
+            }
+        }
 
-        let kitty_theme = fs::read_to_string(params.kitty).unwrap();
-        fs::write("/home/dmytro/.config/kitty/current-theme.conf", kitty_theme).unwrap();
+        match params.wallpaper {
+            Some(ref path) => {
+                set_wallpaper(path);
+            }
+            None => {
+                println!("No wallpaper, doing nothing");
+            }
+        }
 
-        fs::write("/home/dmytro/.config/rofi/config.rasi", params.rofi).unwrap();
+        match params.polybar {
+            Some(ref theme_name) => {
+                fs::write("/home/dmytro/polybar-collection/theme.sh", theme_name).unwrap();
+            }
+            None => {
+                println!("No polybar theme, doing nothing");
+            }
+        }
 
-        set_wallpaper(params.wallpaper.as_str());
+        match params.rofi {
+            Some(ref path) => {
+                fs::write("/home/dmytro/.config/rofi/config.rasi", path).unwrap();
+            }
+            None => {
+                println!("No rofi theme, doing nothing");
+            }
+        }
 
         // Restarting i3
         Command::new("i3-msg")
