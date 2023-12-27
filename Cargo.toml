@@ -1,8 +1,16 @@
 [package]
 name = "eclipto-rs"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
+license = "MIT"
+description = "Eclipto is a simple, fast, and easy-to-use theme manager for Linux."
+documentation = "https://github.com/d1msk1y/eclipto-rs/blob/main/README.md"
+readme = "README.md"
+homepage = "https://github.com/d1msk1y"
+repository = "https://github.com/d1msk1y"
+keywords = ["theme", "theme-manager", "linux", "manager"]
+categories = ["command-line-utilities"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
 
 [dependencies]
