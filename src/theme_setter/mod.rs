@@ -1,17 +1,9 @@
 // Declare module that will set gruvbox theme
-
-pub struct ThemeParams {
-    pub kitty: Option<String>,
-    pub wallpaper: Option<String>,
-    pub rofi: Option<String>,
-    pub polybar: Option<String>,
-}
-
 pub mod theme_setter {
     use std::fs;
     use std::process::Command;
 
-    use crate::theme_setter::ThemeParams;
+    use crate::theme::ThemeParams;
 
     pub fn set_themes(params: ThemeParams) {
         match params.kitty {

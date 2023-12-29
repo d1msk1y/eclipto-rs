@@ -1,5 +1,5 @@
+use crate::theme::ThemeParams;
 use crate::theme_setter;
-use crate::theme_setter::ThemeParams;
 
 pub fn apply() {
     let params = ThemeParams {
