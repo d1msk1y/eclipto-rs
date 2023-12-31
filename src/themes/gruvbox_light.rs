@@ -9,5 +9,5 @@ pub fn apply() {
         polybar: Option::from(String::from("gruvbox-light")),
     };
 
-    theme_setter::theme_setter::set_themes(params);
+    theme_setter::theme_setter::set_themes(&params);
 }

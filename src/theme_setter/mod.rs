@@ -5,7 +5,7 @@ pub mod theme_setter {
 
     use crate::theme::ThemeParams;
 
-    pub fn set_themes(params: ThemeParams) {
+    pub fn set_themes(params: &ThemeParams) {
         match params.kitty {
             Some(ref path) => {
                 let kitty_theme = fs::read_to_string(path).unwrap();

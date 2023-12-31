@@ -1,8 +1,6 @@
-use serde_json::Result;
-
 use crate::theme::ThemeList;
 
-pub fn parse_themes() -> Result<ThemeList> {
+pub fn parse_themes() -> Result<ThemeList, serde_json::Error> {
     // Some JSON input data as a &str. Maybe this comes from the user.
     let data = r#"
         {
@@ -13,13 +11,16 @@ pub fn parse_themes() -> Result<ThemeList> {
             "rofi": "/path/to/rofi/theme",
             "polybar": "theme_name"
         },
-        "gruvbox_light": {
-            // similar structure
+        "gruvbox-light": {
+            "kitty": "/path/to/kitty/theme",
+            "wallpaper": "/path/to/wallpaper",
+            "rofi": "/path/to/rofi/theme",
+            "polybar": "theme_name"
         }
     }
 }
 "#;
-    let p: ThemeList = serde_json::from_str(data)?;
+    let result: ThemeList = serde_json::from_str(data)?;
 
-    Ok(p)
+    Ok(result)
 }
