@@ -4,15 +4,15 @@ use std::path::Path;
 use crate::theme::ThemeList;
 
 pub fn parse_themes() -> Result<ThemeList, serde_json::Error> {
-    const CONFIG_DIR: &str = &*(env::var("HOME").unwrap() + "/.config/eclipto/");
-
-    if !Path::new(&(CONFIG_DIR.to_string() + "themes.json")).exists() {
-        println!("No themes found, creating default themes.json");
-        std::fs::write(CONFIG_DIR.to_string() + "themes.json", "define your themes here").expect("Unable to write file");
-        // quit the program
+    let config_file_dir: &str = &*(env::var("HOME").unwrap() + "/.config/eclipto/themes.json");
+    println!("{}", config_file_dir);
+    if Path::new(&(config_file_dir.to_string())).exists() {
+        println!("No themes found in ~/.config/eclipto/themes.json. Create the file and define your themes there.");
+        println!("{}", config_file_dir);
         std::process::exit(0);
     }
-    let contents = std::fs::read_to_string(CONFIG_DIR.to_string() + "themes.json")
+    println!("Ready");
+    let contents = std::fs::read_to_string(config_file_dir.to_string())
         .expect("Something went wrong reading the file");
 
     let result: ThemeList = serde_json::from_str(&*contents)?;
