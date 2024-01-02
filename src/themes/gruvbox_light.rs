@@ -1,5 +1,5 @@
+use crate::theme::ThemeParams;
 use crate::theme_setter;
-use crate::theme_setter::ThemeParams;
 
 pub fn apply() {
     let params = ThemeParams {
@@ -9,5 +9,5 @@ pub fn apply() {
         polybar: Option::from(String::from("gruvbox-light")),
     };
 
-    theme_setter::theme_setter::set_themes(params);
+    theme_setter::theme_setter::set_themes(&params);
 }
