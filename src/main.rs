@@ -13,4 +13,5 @@ fn main()
 
     let themes = parse_themes().unwrap();
     println!("Themes: {:?}", themes.themes[&theme].clone());
+    theme_setter::theme_setter::set_themes(&themes.themes[&theme].clone());
 }
