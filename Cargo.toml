@@ -1,4 +1,5 @@
 [package]
+authors = ["d1msk1y"]
 name = "eclipto-rs"
 version = "1.0.0"
 edition = "2021"
