@@ -13,6 +13,12 @@ This tool is only relevant to you if you use:
   change bar themes on the fly)
 - [nitrogen](https://github.com/l3ib/nitrogen) wallpaper manager
 
+Eclipto is published on aur, so you can install it with your favorite aur helper.
+
+```bash
+yay -S eclipto-rs-1.0.0-x86_64.tar.gz
+```
+
 ## Configuration
 
 Eclipto uses a simple configuration file to manage themes. The configuration file is located
