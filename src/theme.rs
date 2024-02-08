@@ -9,7 +9,7 @@ pub struct ThemeParams {
     pub wallpaper: Option<String>,
     pub rofi: Option<String>,
     pub polybar: Option<String>,
-
+    pub custom_commands: Option<Vec<String>>,
 }
 
 impl Clone for ThemeParams {
@@ -19,6 +19,7 @@ impl Clone for ThemeParams {
             wallpaper: self.wallpaper.clone(),
             rofi: self.rofi.clone(),
             polybar: self.polybar.clone(),
+            custom_commands: self.custom_commands.clone(),
         }
     }
 }
