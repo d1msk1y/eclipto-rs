@@ -12,5 +12,7 @@ fn main()
 
     let theme_list = parse_themes().unwrap();
     println!("Themes: {:?}", theme_list.themes[&theme_name].clone());
-    theme_setter::theme_setter::set_themes(&theme_list.themes[&theme_name].clone());
+    theme_setter::theme_setter::apply(&theme_list.themes[&theme_name].clone());
+
+    // execute cli command "/path/to/your/custom/script.sh"
 }
