@@ -5,7 +5,7 @@ pub mod theme_setter {
 
     use crate::theme::ThemeParams;
 
-    pub fn set_themes(params: &ThemeParams) {
+    pub fn apply(params: &ThemeParams) {
         match params.kitty {
             Some(ref path) => {
                 let kitty_theme = fs::read_to_string(path).unwrap();
@@ -48,11 +48,25 @@ pub mod theme_setter {
             .arg("restart")
             .status()
             .unwrap();
+
+        match params.custom_commands {
+            Some(ref commands) => {
+                for command in commands {
+                    let output = Command::new(command)
+                        .output()
+                        .expect("failed to execute process");
+                    println!("Command output: {}", String::from_utf8_lossy(&output.stdout));
+                }
+            }
+            None => {
+                println!("No custom commands, doing nothing");
+            }
+        }
     }
 
     fn set_wallpaper(path: &str) {
         //set nitrogen wallpaper
-        let output = Command::new("nitrogen")
+        Command::new("nitrogen")
             .arg("--set-zoom-fill")
             .arg(path)
             .output()
