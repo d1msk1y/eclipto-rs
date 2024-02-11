@@ -21,23 +21,24 @@ yay -S eclipto-rs-1.0.0-x86_64.tar.gz
 
 ## Configuration
 
-Eclipto uses a simple configuration file to manage themes. The configuration file is located
-at `~/.config/eclipto/config.json`. The configuration file is a simple JSON file with the following structure:
+Eclipto uses a simple configuration file to manage themes, which is located
+at `~/.config/eclipto/config.json`. The configuration file is a simple JSON file containing a list of themes and their
+kitty, wallpaper, rofi, polybar and commands to run on theme change.
 
-```json
+Here is an example configuration file:
+
+```bash
 {
 	"themes": {
 		"<your theme name>": {
 			"kitty": "kitty config path(just the color scheme)",
 			"wallpaper": "wallpaper path",
 			"rofi": "rofi config path",
-			"polybar": "polybar theme name(polybar-collection of mine)"
+			"polybar": "polybar theme name(polybar-collection of mine)",
+            "commans": ["commands", "to", "run", "on", "theme", "change"]
 		},
-		"<your theme name>": {
-			"kitty": "kitty config path(just the color scheme)",
-			"wallpaper": "wallpaper path",
-			"rofi": "rofi config path",
-			"polybar": "polybar theme name(polybar-collection of mine)"
+		"<your another theme name>": {
+#			...repeat for each theme
 		}
 	}
 }
