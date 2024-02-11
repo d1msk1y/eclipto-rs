@@ -67,11 +67,22 @@ pub mod theme_setter {
     }
 
     fn set_wallpaper(path: &str) {
-        //set nitrogen wallpaper
-        Command::new("nitrogen")
-            .arg("--set-zoom-fill")
-            .arg(path)
+        let monitors = Command::new("bash")
+            .arg("-c")
+            .arg("xrandr | grep ' connected' | cut -d ' ' -f1")
             .output()
             .expect("failed to execute process");
+
+        let monitors = String::from_utf8_lossy(&monitors.stdout);
+        let monitors: Vec<&str> = monitors.split_whitespace().collect();
+        for monitor in monitors {
+            Command::new("nitrogen")
+                .arg("--set-zoom-fill")
+                .arg(path)
+                .arg("--head")
+                .arg(monitor)
+                .output()
+                .expect("failed to execute process");
+        }
     }
 }
