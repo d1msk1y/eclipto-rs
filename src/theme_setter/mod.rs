@@ -49,10 +49,12 @@ pub mod theme_setter {
             .status()
             .unwrap();
 
-        match params.custom_commands {
+        match params.commands {
             Some(ref commands) => {
                 for command in commands {
-                    let output = Command::new(command)
+                    let output = Command::new("bash")
+                        .arg("-c")
+                        .arg(command)
                         .output()
                         .expect("failed to execute process");
                     println!("Command output: {}", String::from_utf8_lossy(&output.stdout));
