@@ -9,6 +9,7 @@ pub struct ThemeParams {
     pub wallpaper: Option<String>,
     pub rofi: Option<String>,
     pub polybar: Option<String>,
+    pub gtk3: Option<String>,
     pub commands: Option<Vec<String>>,
 }
 
@@ -19,6 +20,7 @@ impl Clone for ThemeParams {
             wallpaper: self.wallpaper.clone(),
             rofi: self.rofi.clone(),
             polybar: self.polybar.clone(),
+            gtk3: self.gtk3.clone(),
             commands: self.commands.clone(),
         }
     }
