@@ -43,6 +43,17 @@ pub mod theme_setter {
             }
         }
 
+        match params.gtk3 {
+            Some(ref path) => {
+                // read file on the path
+                let theme = fs::read_to_string(path).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/.config/gtk-3.0/settings.ini", theme).unwrap();
+            }
+            None => {
+                println!("No GTK3 Theme, doin nothing")
+            }
+        }
+
         // Restarting i3
         Command::new("i3-msg")
             .arg("restart")
