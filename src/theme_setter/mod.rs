@@ -1,6 +1,6 @@
 // Declare module that will set gruvbox theme
 pub mod theme_setter {
-    use std::fs;
+    use std::{env, fs};
     use std::process::Command;
 
     use crate::theme::ThemeParams;
@@ -9,7 +9,7 @@ pub mod theme_setter {
         match params.kitty {
             Some(ref path) => {
                 let kitty_theme = fs::read_to_string(path).unwrap();
-                fs::write("/home/dmytro/.config/kitty/current-theme.conf", kitty_theme).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/.config/kitty/current-theme.conf", kitty_theme).unwrap();
             }
             None => {
                 println!("No kitty theme, doing nothing");
@@ -27,7 +27,7 @@ pub mod theme_setter {
 
         match params.polybar {
             Some(ref theme_name) => {
-                fs::write("/home/dmytro/polybar-collection/theme.sh", theme_name).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/polybar-collection/theme.sh", theme_name).unwrap();
             }
             None => {
                 println!("No polybar theme, doing nothing");
@@ -36,10 +36,21 @@ pub mod theme_setter {
 
         match params.rofi {
             Some(ref path) => {
-                fs::write("/home/dmytro/.config/rofi/config.rasi", path).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/.config/rofi/config.rasi", path).unwrap();
             }
             None => {
                 println!("No rofi theme, doing nothing");
+            }
+        }
+
+        match params.gtk3 {
+            Some(ref path) => {
+                // read file on the path
+                let theme = fs::read_to_string(path).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/.config/gtk-3.0/settings.ini", theme).unwrap();
+            }
+            None => {
+                println!("No GTK3 Theme, doin nothing")
             }
         }
 
