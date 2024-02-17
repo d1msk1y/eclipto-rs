@@ -78,22 +78,27 @@ pub mod theme_setter {
     }
 
     fn set_wallpaper(path: &str) {
-        let monitors = Command::new("bash")
+        let output = Command::new("bash")
             .arg("-c")
-            .arg("xrandr | grep ' connected' | cut -d ' ' -f1")
+            .arg("xrandr --listmonitors | grep 'Monitors' | cut -d ' ' -f2")
             .output()
             .expect("failed to execute process");
 
-        let monitors = String::from_utf8_lossy(&monitors.stdout);
-        let monitors: Vec<&str> = monitors.split_whitespace().collect();
-        for monitor in monitors {
-            Command::new("nitrogen")
+        println!("Output monitors: {}", String::from_utf8_lossy(&output.stdout));
+
+        let monitor_count = String::from_utf8_lossy(&output.stdout).trim().parse::<usize>().unwrap_or(0);
+
+        for index in 0..monitor_count {
+            println!("Setting wallpaper for monitor {} with path: {}", index, path);
+            let output = Command::new("nitrogen")
                 .arg("--set-zoom-fill")
                 .arg(path)
-                .arg("--head")
-                .arg(monitor)
+                .arg("--head=".to_owned() + &index.to_string())
+                // .arg("0") // Convert index to String
                 .output()
-                .expect("failed to execute process");
+                .expect("Failed to execute process");
+
+            println!("Nitrogen output: {}", String::from_utf8_lossy(&output.stdout));
         }
     }
 }
