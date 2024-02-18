@@ -1,7 +1,7 @@
 [package]
 authors = ["d1msk1y"]
 name = "eclipto-rs"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2021"
 license = "MIT"
 description = "Eclipto is a simple, fast, and easy-to-use theme manager for Linux."
