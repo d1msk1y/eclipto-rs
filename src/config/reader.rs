@@ -4,7 +4,7 @@ use std::path::Path;
 use crate::theme::ThemeList;
 
 pub fn parse_themes() -> Result<ThemeList, serde_json::Error> {
-    let config_file_dir: &str = &*(env::var("HOME").unwrap() + "/.config/eclipto/themes.json");
+    let config_file_dir: &str = &*(env::var("HOME").unwrap() + "/.config/eclipto/config.json");
     println!("PATH: {}", config_file_dir);
     if !Path::new(&(config_file_dir.to_string())).exists() {
         println!("No themes found in ~/.config/eclipto/themes.json. Create the file and define your themes there.");
