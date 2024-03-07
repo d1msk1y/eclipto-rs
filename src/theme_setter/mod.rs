@@ -43,6 +43,16 @@ pub mod theme_setter {
             }
         }
 
+        match params.i3 {
+            Some(ref path) => {
+                let override_file = fs::read_to_string(path).unwrap();
+                fs::write(env::var("HOME").unwrap() + "/.config/i3/override", override_file).unwrap();
+            }
+            None => {
+                println!("No i3 theme, doing nothing");
+            }
+        }
+
         match params.gtk3 {
             Some(ref path) => {
                 // read file on the path
