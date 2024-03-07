@@ -7,8 +7,8 @@ license = "MIT"
 description = "Eclipto is a simple, fast, and easy-to-use theme manager for Linux."
 documentation = "https://github.com/d1msk1y/eclipto-rs/blob/main/README.md"
 readme = "README.md"
-homepage = "https://github.com/d1msk1y"
-repository = "https://github.com/d1msk1y"
+homepage = "https://github.com/d1msk1y/eclipto-rs"
+repository = "https://github.com/d1msk1y/eclipto-rs"
 keywords = ["theme", "theme-manager", "linux", "manager"]
 categories = ["command-line-utilities"]
 

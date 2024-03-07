@@ -1,6 +1,9 @@
 # Eclipto-rs
 
 Eclipto is a simple, fast and easy-to-use theme management tool for linux desktops running the i3 Windows Manager.
+Switch between your most diverse system-global themes with a single command in an instant.  
+As most of the linux users, i like to customize my system to my liking, but with time i had found myself wasting too
+much time changing the theme of my system, so i decided to create a tool to do it for me.
 
 ## Installation
 
@@ -35,6 +38,8 @@ Here is an example configuration file:
 			"wallpaper": "wallpaper path",
 			"rofi": "rofi config path",
 			"polybar": "polybar theme name(polybar-collection of mine)",
+			"i3": "path to your i3 config file with overrides for the theme",
+			"gtk3": "path to your gtk3 theme(a copy of .config/gtk-3.0/settings.ini)",
             "commans": ["commands", "to", "run", "on", "theme", "change"]
 		},
 		"<your another theme name>": {
@@ -42,6 +47,27 @@ Here is an example configuration file:
 		}
 	}
 }
+```
+
+### i3
+
+To configurate i3 config, you have to:
+
+1. create a new file with the values you want to be overridden in the theme.
+2. Then, you have to create a file in the same directory as the i3 config file with "overrides" in the name.
+3. In the main config file, you have to include the overrides file at the bottom below the other settings.
+
+```bash
+# ~/.config/i3/config
+# ...
+include ~/.config/i3/overrides
+```
+
+4. Then add the path to the custom overrides file in the theme configuration.
+
+```bash
+# ~/.config/eclipto/config.json
+"i3": "path to your i3 config file with overrides for the theme",
 ```
 
 ## Usage
