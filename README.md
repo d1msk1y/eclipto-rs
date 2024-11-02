@@ -5,10 +5,10 @@ Switch between your most diverse system-global themes with a single command in a
 As most of the linux users, i like to customize my system to my liking, but with time i had found myself wasting too
 much time changing the theme of my system, so i decided to create a tool to do it for me.
 
-So now, I can switch between these two themes in jsut one comman!
+So now, I can switch between these two themes in just one command!
 ![we23png](https://github.com/user-attachments/assets/23e44c93-2546-4e04-82dd-a6e73e10d284)
 
-If you use different components, see if there are any forks of the tool with components that you use. But if you think you're too cool you can actualy create your own fork of it ;)
+If you use different components, see if there are any fork of the tool with components that you use. But if you think you're too cool you can even create your own fork of it ;)
 
 
 ## Installation
@@ -85,7 +85,7 @@ eclipto <theme name>
 ```
 
 ## Contributing - Important if you use different components!
-I know such specific stack of i3 + polybar + kitty etc looks like a joke. You lucky if you have the exact same stuck, however if you use different componets, you can easily adjust the tool to your needs. This CLI tool is even simple than you think. The config.json is basically a list of parameters with bash commands tied to them. Simply go to a respecitve module in the code, find the issued bash command and adjust it.
+I know such specific stack of i3 + polybar + kitty etc looks like a joke. You lucky if you have the exact same stuck, however if you use different components, you can easily adjust the tool to your needs. This CLI tool is even simple than you think. The config.json is basically a list of parameters with bash commands tied to them. Simply go to a module in the code, find the issued bash command and adjust it.
 
 For example:
 Lets say you happen to use a different alternative to rofi. 
@@ -95,4 +95,4 @@ Lets say you happen to use a different alternative to rofi.
 Sounds easy to me! XD 
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  
-Also feel free to fork this repository and port it to other .
+Also feel free to fork this repository and port it to other.
